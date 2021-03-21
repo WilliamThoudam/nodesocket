@@ -1,0 +1,3 @@
+{
+    "mongoURI": "mongodb://dojoko:welcome12@mongodb/dojoko?retryWrites=true&w=majority&authSource=admin&w=majority"
+}

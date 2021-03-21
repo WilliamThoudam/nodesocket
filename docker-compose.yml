@@ -1,0 +1,21 @@
+version: '3'
+services:
+  node:
+    build: .
+    restart: always
+    ports:
+      - 5000:5000
+    command: ['npm', 'run', 'server']
+    volumes:
+      - ./:/usr/src/app
+    links:
+      - mongodb
+
+  mongodb:
+    image: mongo:4.2.6
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: dojoko
+      MONGO_INITDB_ROOT_PASSWORD: welcome12
