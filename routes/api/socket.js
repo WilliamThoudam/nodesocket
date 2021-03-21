@@ -41,7 +41,11 @@ const socket = async (server, app) => {
       }
       socket.join(room._id);
       const oldmessage = await Message.findOne({ room_id: room._id });
-      const messages = oldmessage.messages;
+      if (oldmessage) {
+        var messages = oldmessage.messages;
+      } else {
+        var messages = [];
+      }
       io.to(id).emit('assignedRoomId', { room, messages });
     });
 
