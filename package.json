@@ -1,7 +1,7 @@
 {
-  "name": "dojokosocket",
+  "name": "nodesocket",
   "version": "1.0.0",
-  "description": "Socket for dojoko",
+  "description": "Socket for messaging",
   "main": "server.js",
   "scripts": {
     "start": "node server",
