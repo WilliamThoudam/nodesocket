@@ -61,7 +61,7 @@ const socket = async (server, app) => {
     // });
 
     socket.on('typing', ({ room_id }) => {
-      console.log('Typing user id is ' + id + 'and room id is ' + room_id);
+      console.log('Typing user id is ' + id + ' and room id is ' + room_id);
       io.to(room_id).emit('typingresponse', { user_id: id });
     });
 
@@ -87,7 +87,7 @@ const socket = async (server, app) => {
 
         var res = result.messages.reverse()[0];
         console.log(
-          'Sent message by user id ' + id + 'and room id is ' + room_id
+          'Sent message by user id ' + id + ' and room id is ' + room_id
         );
         io.to(room_id).emit('newMessage', res);
       }
