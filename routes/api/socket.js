@@ -48,7 +48,7 @@ const socket = async (server, app) => {
       }
       console.log(
         'Initiated private message by user id ' +
-          user_id +
+          id +
           ' and room id is ' +
           room._id
       );
