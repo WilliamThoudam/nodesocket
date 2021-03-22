@@ -20,6 +20,7 @@ const socket = async (server, app) => {
     const id = socket.user;
     console.log('Connected user id is ' + id);
     socket.join(id);
+    io.emit('socketConnected', id);
     socket.on('disconnect', () => {
       console.log('Disconnected user id is ' + id);
     });
@@ -91,6 +92,12 @@ const socket = async (server, app) => {
         );
         io.to(room_id).emit('newMessage', res);
       }
+    });
+
+    // For typing test
+    socket.on('testtyping', () => {
+      console.log('Typing user id is ' + id);
+      io.emit('testtyping', id);
     });
   });
 };
