@@ -18,10 +18,10 @@ const socket = async (server, app) => {
 
   io.on('connection', (socket) => {
     const id = socket.user;
-    console.log('Connected user ' + id);
+    console.log('Connected user id is ' + id);
     socket.join(id);
     socket.on('disconnect', () => {
-      console.log('Disconnected user ' + id);
+      console.log('Disconnected user id is ' + id);
     });
 
     socket.on('initPrivateMessage', async ({ logged_id, user_id }) => {
@@ -46,6 +46,12 @@ const socket = async (server, app) => {
       } else {
         var messages = [];
       }
+      console.log(
+        'Initiated private message by user id ' +
+          user_id +
+          ' and room id is ' +
+          room._id
+      );
       io.to(id).emit('assignedRoomId', { room, messages });
     });
 
@@ -55,6 +61,7 @@ const socket = async (server, app) => {
     // });
 
     socket.on('typing', ({ room_id }) => {
+      console.log('Typing user id is ' + id + 'and room id is ' + room_id);
       io.to(room_id).emit('typingresponse', { user_id: id });
     });
 
@@ -79,6 +86,9 @@ const socket = async (server, app) => {
         }
 
         var res = result.messages.reverse()[0];
+        console.log(
+          'Sent message by user id ' + id + 'and room id is ' + room_id
+        );
         io.to(room_id).emit('newMessage', res);
       }
     });
