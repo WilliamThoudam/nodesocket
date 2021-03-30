@@ -94,7 +94,7 @@ const socket = async (server, app) => {
       }
     });
 
-    // For typing test
+    /// For typing test
     socket.on('testtyping', () => {
       console.log('Typing user id is ' + id);
       io.emit('testtyping', id);
